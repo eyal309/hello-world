@@ -33,17 +33,17 @@ pipeline {
       steps {
         withAWS(region:'us-east-1',credentials:'aws') {
           sh 'aws eks --region us-east-1 update-kubeconfig --name education-eks-0QZdN0Ge'
-          }
         }
       }
-      stage('Deploy Updated Image to Cluster'){
-        steps {
-          sh '''
+    }
+    stage('Deploy Updated Image to Cluster'){
+      steps {
+        sh '''
             export IMAGE="$registry:$BUILD_NUMBER"
             sed -ie "s~IMAGE~$IMAGE~g" manifest.yml
             .kubectl apply -f manifest.yml
-          '''
-        }
+        '''
+      }
     }
   }
 }
