@@ -14,4 +14,4 @@ WORKDIR /code
 
 EXPOSE 8080
 
-ENTRYPOINT ["gunicorn", "-b 0.0.0.0:8080", "app:app"]
+ENTRYPOINT ["gunicorn", "-b 0.0.0.0:3030", "app:app"]
