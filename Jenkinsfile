@@ -5,7 +5,6 @@ pipeline {
     dockerImage = ''
     dockerHome = tool 'Docker'
     env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
   }
   agent any
   stages {
