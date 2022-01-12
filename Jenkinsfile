@@ -3,19 +3,17 @@ pipeline {
     registry = "eyal309/flask_test"
     registryCredential = 'dockerhub'
     dockerImage = ''
-    dockerHome = tool 'Docker'
-    env.PATH = "${dockerHome}/bin:${env.PATH}"
   }
   agent any
   stages {
-   stage('Building image') {
+    stage('Building image') {
       steps{
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
-   stage('Push Image') {
+    stage('Push Image') {
       steps{
         script {
           docker.withRegistry( '', registryCredential ) {
@@ -24,7 +22,7 @@ pipeline {
         }
       }
     }
-   stage('Remove Unused docker image') {
+    stage('Remove Unused docker image') {
       steps{
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
