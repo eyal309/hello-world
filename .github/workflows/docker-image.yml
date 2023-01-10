@@ -8,18 +8,11 @@ on:
 
 jobs:
 
-  build:
+  build-and-push-image:
 
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Docker Login
-      uses: docker/login-action@v2.1.0
-      with:
-        username: ${{ secrets.DOCKER_UNAME }}
-        password: ${{ secrets.DOCKER_PAS }}
-        # Log out from the Docker registry at the end of a job
-        logout: true
+    steps:   
     
     - name: Docker Build Tag Publish
       uses: bitovi/github-actions-docker-publish@v1.0.7
@@ -28,6 +21,6 @@ jobs:
         org_name: eyal309
         repo_name: flask_test 
         use_latest: true
-#        docker_username: ${{ secrets.DOCKER_UNAME }}
-#        docker_password: ${{ secrets.DOCKER_PAS }}
+        docker_username: ${{ secrets.DOCKER_UNAME }}
+        docker_password: ${{ secrets.DOCKER_PAS }}
 
