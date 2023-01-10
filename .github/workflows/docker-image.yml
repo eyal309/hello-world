@@ -21,22 +21,13 @@ jobs:
         # Log out from the Docker registry at the end of a job
         logout: true
     
-    - name: Build and push Docker images
-      uses: docker/build-push-action@v3.2.0
+    - name: Docker Build Tag Publish
+      uses: bitovi/github-actions-docker-publish@v1.0.7
       with:
-        file: .
-        no-cache: true
-        push: true
-
-    
-    
-    #- name: Docker Build Tag Publish
-    #  uses: bitovi/github-actions-docker-publish@v1.0.7
-    #  with:
-    #    image_tag: $(date +%s)
-    #    org_name: eyal309
-    #    repo_name: flask_test 
-    #    use_latest: true
-    #    docker_username: ${{ secrets.DOCKER_UNAME }}
-    #    docker_password: ${{ secrets.DOCKER_PAS }}
+        image_tag: $(date +%s)
+        org_name: eyal309
+        repo_name: flask_test 
+        use_latest: true
+#        docker_username: ${{ secrets.DOCKER_UNAME }}
+#        docker_password: ${{ secrets.DOCKER_PAS }}
 
