@@ -7,7 +7,6 @@ on:
     branches: [ "master" ]
 
 jobs:
-
   run-test:
     runs-on: ubuntu-latest     
     steps:
