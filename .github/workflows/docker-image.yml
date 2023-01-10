@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag flask_test:$(date +%s)
-      
-      
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v3.1.2
+    - name: Docker Build Tag Publish
+      uses: bitovi/github-actions-docker-publish@v1.0.7
       with:
-        name: flask_test:$(date +%s)
+        image_tag: flask_test:$(date +%s)
+        org_name: eyal309
+        repo_name: flask_test 
+        use_latest: true
+        docker_username: ${{ secrets.DOCKER_UNAME }}
+        docker_password: ${{ secrets.DOCKER_PAS }}
 
